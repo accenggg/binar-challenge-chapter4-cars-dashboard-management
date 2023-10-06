@@ -4,12 +4,14 @@ const router = express.Router();
 
 const adminController = require("../controllers/admin");
 
+const uploader = require("../middlewares/upload");
+
 router.route("/").get(adminController.adminPage);
 
 router
   .route("/create")
   .get(adminController.createCarPage)
-  .post(adminController.createCar);
+  .post(uploader.single("image"), adminController.createCar);
 
 router
   .route("/edit")

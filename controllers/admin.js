@@ -1,6 +1,5 @@
 const Car = require("../models/cars");
-// const
-// console.log(form);
+const imagekit = require("../lib/imageKit");
 
 const adminPage = async (req, res) => {
   let fullUrl = "http://localhost:3000/dashboard";
@@ -91,8 +90,26 @@ const editCarPage = async (req, res) => {
 };
 
 const createCar = async (req, res) => {
+  const { name, priceRent, seats, type } = req.body;
+  const file = req.file;
+  console.log(req.body);
   try {
-    await Car.create(req.body);
+    console.log(file);
+    const split = file.originalname.split(".");
+    const extension = split[split.length - 1];
+
+    const img = await imagekit.upload({
+      file: file.buffer,
+      fileName: `IMG-${Date.now}.${extension}`,
+    });
+
+    await Car.create({
+      name,
+      priceRent,
+      seats,
+      type,
+      image: img.url,
+    });
     console.log(req.body);
     res.redirect("/dashboard");
   } catch (err) {
