@@ -1,0 +1,4 @@
+content > container > nav > dibawah ol
+<!-- <div class="alert <%= (message == 'success' ? "alert-success" :"alert-dark") %> <%= message != '' ? "" : "d-none" %>" role="alert">
+                                    Data Berhasil <%= message %>
+                                </div> -->

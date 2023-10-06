@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Toyota Camry",
+    "priceRent": 250000,
+    "seats": 4,
+    "type": "Sedan",
+    "image": "camry.jpg",
+    "lastModified": "2023-10-05"
+  },
+  {
+    "name": "Honda CR-V",
+    "priceRent": 300000,
+    "seats": 5,
+    "type": "SUV",
+    "image": "crv.jpg",
+    "lastModified": "2023-10-05"
+  },
+  {
+    "name": "Ford F-150",
+    "priceRent": 350000,
+    "seats": 6,
+    "type": "Truck",
+    "image": "f150.jpg",
+    "lastModified": "2023-10-05"
+  },
+  {
+    "name": "Honda CBR600RR",
+    "priceRent": 150000,
+    "seats": 1,
+    "type": "Motorcycle",
+    "image": "cbr.jpg",
+    "lastModified": "2023-10-05"
+  },
+  {
+    "name": "Chrysler Pacifica",
+    "priceRent": 350000,
+    "seats": 7,
+    "type": "Minivan",
+    "image": "pacifica.jpg",
+    "lastModified": "2023-10-05"
+  }
+]
