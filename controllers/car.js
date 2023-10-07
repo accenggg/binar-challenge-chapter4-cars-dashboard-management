@@ -20,30 +20,6 @@ const getAllCars = async (req, res) => {
   }
 };
 
-const editCar = async (req, res) => {
-  try {
-    const id = req.params.id;
-
-    const car = await Tour.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
-
-    fs.writeFile("../dev-data/data/cars.json");
-
-    res.status(200).json({
-      status: "success",
-      data: {
-        car,
-      },
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "failed",
-      message: err.message,
-    });
-  }
-};
-
 module.exports = {
   getAllCars,
 };

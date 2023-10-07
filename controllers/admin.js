@@ -25,9 +25,6 @@ const adminPage = async (req, res) => {
       condition.seats = { $gte: Number(seat), $lt: Number(seat) + 3 };
     }
 
-    console.log("ini kondisi");
-    console.log(condition.seats);
-
     if (search) {
       condition.name = new RegExp(search, "i");
     }
@@ -44,7 +41,6 @@ const adminPage = async (req, res) => {
     // seats < 10 : seats = 1,0 ...
 
     const cars = await Car.find().where(condition).exec();
-    console.log(cars);
     res.render("index", {
       title: "dashboard",
       fullUrl,
@@ -93,7 +89,6 @@ const createCar = async (req, res) => {
   const { name, priceRent, seats, type } = req.body;
   const file = req.file;
   try {
-    console.log(file);
     const split = file.originalname.split(".");
     const extension = split[split.length - 1];
 
@@ -109,7 +104,6 @@ const createCar = async (req, res) => {
       type,
       image: img.url,
     });
-    console.log(req.body);
     res.redirect("/dashboard");
   } catch (err) {
     res.status(500).json({
@@ -125,9 +119,6 @@ const editCar = async (req, res) => {
   let img;
   try {
     const id = req.query.id;
-
-    console.log(req.body);
-    console.log(!file);
 
     if (file) {
       const split = file.originalname.split(".");

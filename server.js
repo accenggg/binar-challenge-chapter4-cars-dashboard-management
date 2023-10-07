@@ -23,20 +23,6 @@ mongoose
     })
   );
 
-// const data = new Car({
-//   name: "Toyota Camry",
-//   priceRent: 250000,
-//   seats: 4,
-//   type: "Sedan",
-//   image: "camry.jpg",
-//   lastModified: "2023-10-05",
-// });
-
-// data
-//   .save()
-//   .then((result) => console.log("sukses", result))
-//   .catch((err) => console.log("eror", err));
-
 // listen port
 app.listen(port, () => {
   console.log(`App running on port ${port}...`);
