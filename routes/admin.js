@@ -16,7 +16,7 @@ router
 router
   .route("/edit")
   .get(adminController.editCarPage)
-  .post(adminController.editCar);
+  .post(uploader.single("image"), adminController.editCar);
 
 router.route("/delete/:id").get(adminController.deleteCar);
 

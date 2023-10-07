@@ -92,7 +92,6 @@ const editCarPage = async (req, res) => {
 const createCar = async (req, res) => {
   const { name, priceRent, seats, type } = req.body;
   const file = req.file;
-  console.log(req.body);
   try {
     console.log(file);
     const split = file.originalname.split(".");
@@ -121,11 +120,34 @@ const createCar = async (req, res) => {
 };
 
 const editCar = async (req, res) => {
+  const { name, priceRent, seats, type } = req.body;
+  const file = req.file;
+  let img;
   try {
     const id = req.query.id;
+
+    console.log(req.body);
+    console.log(!file);
+
+    if (file) {
+      const split = file.originalname.split(".");
+      const extension = split[split.length - 1];
+      img = await imagekit.upload({
+        file: file.buffer,
+        fileName: `IMG-${Date.now}.${extension}`,
+      });
+    } else {
+      const lastFile = await Car.findById(id);
+      img = { url: lastFile.image };
+    }
+
     const now = new Date().toDateString();
     const updateCar = {
-      ...req.body,
+      name,
+      priceRent,
+      seats,
+      type,
+      image: img.url,
       lastModified: now,
     };
 
